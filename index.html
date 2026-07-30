@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physio MCQ — Anatomy &amp; Neuroanatomy Practice</title>
+
+<meta name="description" content="Free MCQ practice platform for Physiotherapy students preparing for MPT, AIIMS, and Railway Physiotherapy exams. Practice 1500+ Anatomy and Neuroanatomy questions by subject, topic, and difficulty.">
+<meta name="keywords" content="physio mcq, physiotherapy mcq, MPT exam preparation, AIIMS physiotherapy, railway physiotherapy exam, anatomy mcq, neuroanatomy mcq">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://neetikacodes.github.io/physio-mcq/">
+
+<meta property="og:title" content="Physio MCQ — Anatomy & Neuroanatomy Practice">
+<meta property="og:description" content="Free MCQ practice for Physiotherapy students preparing for MPT, AIIMS, and Railway Physiotherapy exams.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://neetikacodes.github.io/physio-mcq/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ticker-bar" id="ticker-bar" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">📚 <strong class="ticker-total-num">0</strong>+ practice MCQs</span>
+    <span class="ticker-sep">•</span>
+    <span class="ticker-item">Preparation for MPT · AIIMS · Railway Physiotherapy Exams</span>
+    <span class="ticker-sep">•</span>
+    <span class="ticker-item">Practice by Subject, Topic &amp; Difficulty</span>
+    <span class="ticker-sep">•</span>
+    <span class="ticker-item">📚 <strong class="ticker-total-num">0</strong>+ practice MCQs</span>
+    <span class="ticker-sep">•</span>
+    <span class="ticker-item">Preparation for MPT · AIIMS · Railway Physiotherapy Exams</span>
+    <span class="ticker-sep">•</span>
+    <span class="ticker-item">Practice by Subject, Topic &amp; Difficulty</span>
+    <span class="ticker-sep">•</span>
+  </div>
+</div>
+
+<div class="app" id="app">
+
+<div class="page active-page" id="page-practice">
+
+  <!-- ===== SCREEN 1: SETUP ===== -->
+  <section class="screen setup-screen" id="setup-screen">
+    <header class="brand-row">
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M20 20 L20 5" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M20 20 L31 27" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="20" cy="20" r="1.8" fill="currentColor"/>
+        </svg>
+        <div>
+          <p class="brand-eyebrow">MPT Exam Prep</p>
+          <h1 class="brand-title">Physio MCQ</h1>
+        </div>
+      </div>
+      <p class="bank-count"><span id="bank-total">1555</span> questions in bank</p>
+    </header>
+
+    <div class="setup-card">
+      <div class="setup-block">
+        <h2 class="setup-label">Choose a subject</h2>
+        <div class="chip-grid" id="subject-chips" role="group" aria-label="Subject"></div>
+      </div>
+
+      <div class="setup-block" id="topic-block" hidden>
+        <h2 class="setup-label">Topic within subject</h2>
+        <div class="chip-row chip-row-wrap" id="topic-chips" role="group" aria-label="Topic"></div>
+      </div>
+
+      <div class="setup-block">
+        <h2 class="setup-label">Difficulty</h2>
+        <div class="chip-row" id="difficulty-chips" role="group" aria-label="Difficulty"></div>
+      </div>
+
+      <div class="setup-block">
+        <div class="setup-label-row">
+          <h2 class="setup-label">Number of questions</h2>
+          <span class="count-readout" id="count-readout">20</span>
+        </div>
+        <input type="range" id="count-slider" min="5" max="100" step="5" value="20">
+        <div class="slider-scale"><span>5</span><span>100</span></div>
+        <p class="setup-hint" id="available-hint">Available: —</p>
+      </div>
+    </div>
+
+    <div class="progress-recap" id="progress-recap"></div>
+
+    <div class="ad-slot">
+      <p class="ad-label">Sponsored</p>
+      <a href="#" target="_blank" rel="noopener sponsored">
+        <img src="assets/ad-banner.png" alt="Advertisement" loading="lazy">
+      </a>
+    </div>
+
+    <div class="sticky-action-bar" id="sticky-action-bar">
+      <div class="sticky-action-inner">
+        <div class="sticky-info">
+          <span class="sticky-selection" id="sticky-selection">All subjects</span>
+          <span class="sticky-hint" id="sticky-hint-mirror">Tap start when ready</span>
+        </div>
+        <button class="start-btn sticky-start-btn" id="start-btn">
+          <span>Start practice</span>
+          <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M10 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREEN 2: QUIZ ===== -->
+  <section class="screen quiz-screen" id="quiz-screen" hidden>
+    <header class="quiz-top">
+      <button class="exit-btn" id="exit-btn" aria-label="End session">
+        <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M12 5l-6 5 6 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        End
+      </button>
+      <div class="quiz-meta">
+        <span class="quiz-subject" id="quiz-subject-tag">Anatomy</span>
+        <span class="quiz-topic" id="quiz-topic-tag">Upper Limb</span>
+        <span class="quiz-diff" id="quiz-diff-tag">Medium</span>
+      </div>
+      <div class="quiz-score">
+        Score <span id="live-score">0</span>/<span id="live-answered">0</span>
+      </div>
+    </header>
+
+    <div class="progress-track" aria-hidden="true">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <p class="progress-label"><span id="q-index">1</span> of <span id="q-total">20</span></p>
+
+    <article class="q-card">
+      <p class="q-id" id="q-id">Q001</p>
+      <h2 class="q-text" id="q-text">Question text goes here</h2>
+
+      <div class="options" id="options-list"></div>
+
+      <div class="explain-panel" id="explain-panel" hidden>
+        <p class="explain-verdict" id="explain-verdict"></p>
+        <p class="explain-text" id="explain-text"></p>
+      </div>
+    </article>
+
+    <div class="quiz-nav">
+      <button class="next-btn" id="next-btn" disabled>
+        <span id="next-btn-label">Select an answer</span>
+        <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 10h11M10 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ===== SCREEN 3: RESULTS ===== -->
+  <section class="screen results-screen" id="results-screen" hidden>
+    <header class="results-header">
+      <p class="brand-eyebrow">Session complete</p>
+      <h1 class="results-title" id="results-title">Anatomy · Medium</h1>
+    </header>
+
+    <div class="dial-wrap">
+      <svg class="dial" viewBox="0 0 200 120" aria-hidden="true">
+        <path d="M15 105 A85 85 0 0 1 185 105" fill="none" stroke="var(--paper-line)" stroke-width="14" stroke-linecap="round"/>
+        <path id="dial-arc" d="M15 105 A85 85 0 0 1 185 105" fill="none" stroke="var(--teal)" stroke-width="14" stroke-linecap="round"
+          stroke-dasharray="267" stroke-dashoffset="267"/>
+        <text x="100" y="88" text-anchor="middle" class="dial-pct" id="dial-pct">0%</text>
+        <text x="100" y="106" text-anchor="middle" class="dial-sub">correct</text>
+      </svg>
+      <p class="dial-fraction" id="dial-fraction">0 / 0 correct</p>
+    </div>
+
+    <p class="breakdown-label" id="breakdown-label">By difficulty</p>
+    <div class="results-breakdown" id="results-breakdown"></div>
+
+    <div class="results-actions">
+      <button class="secondary-btn" id="review-btn">Review answers</button>
+      <button class="start-btn" id="retry-btn">Practice again</button>
+    </div>
+
+    <div class="review-list" id="review-list" hidden></div>
+  </section>
+
+</div>
+<!-- ===== end practice-page ===== -->
+
+<div class="page" id="page-about">
+  <!-- ===== SCREEN 4: ABOUT ===== -->
+  <section class="screen info-screen" id="about-section">
+    <header class="brand-row">
+      <div class="brand">
+        <div>
+          <p class="brand-eyebrow">Who this is for</p>
+          <h1 class="brand-title" style="font-size:22px;">About Physio MCQ</h1>
+        </div>
+      </div>
+    </header>
+
+    <div class="setup-card">
+      <p class="info-text">
+        Physio MCQ is a free practice tool built for Physiotherapy students preparing
+        for MPT, AIIMS, and Railway Physiotherapy exams. Questions are organized by
+        subject, topic, and difficulty so you can focus your revision exactly where
+        you need it.
+      </p>
+      <p class="info-text">
+        <strong>Please note:</strong> this platform is intended for
+        <strong>practice and self-assessment only</strong>. Use it to test your
+        knowledge and identify weak areas — not as a substitute for your official
+        textbooks, syllabus, or coursework.
+      </p>
+    </div>
+  </section>
+</div>
+<!-- ===== end about-page ===== -->
+
+<div class="page" id="page-policy">
+  <!-- ===== SCREEN 5: POLICY / DISCLAIMER ===== -->
+  <section class="screen info-screen" id="policy-section">
+    <header class="brand-row">
+      <div class="brand">
+        <div>
+          <p class="brand-eyebrow">Please read</p>
+          <h1 class="brand-title" style="font-size:22px;">Disclaimer &amp; Usage Policy</h1>
+        </div>
+      </div>
+    </header>
+
+    <div class="setup-card">
+      <ul class="info-list">
+        <li>
+          <strong>Practice only.</strong> All questions and answers are provided for
+          practice and self-learning purposes. They should not be treated as a
+          substitute for standard textbooks, official syllabus, or faculty guidance.
+        </li>
+        <li>
+          <strong>Accuracy.</strong> Every effort is made to keep answers accurate, but
+          occasional errors are possible. Please verify anything critical against your
+          textbook or instructor before an exam.
+        </li>
+        <li>
+          <strong>No affiliation.</strong> This platform is not affiliated with any
+          exam board (MPT, AIIMS, Railway Physiotherapy, or others) and does not
+          guarantee that practice questions will match actual exam content.
+        </li>
+        <li>
+          <strong>Found an error?</strong> Use the "Report Issue" button below to flag
+          a wrong answer or unclear question — corrections are reviewed regularly.
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+<!-- ===== end policy-page ===== -->
+
+</div>
+
+<!-- ===== BOTTOM TAB BAR ===== -->
+<nav class="bottom-tabs" id="bottom-tabs">
+  <button class="tab-btn active" data-page="practice">
+    <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M4 4h12v12H4z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 8h6M7 11h6M7 14h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <span>Practice</span>
+  </button>
+  <button class="tab-btn" data-page="about">
+    <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="7.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="6.3" r="1" fill="currentColor"/></svg>
+    <span>About</span>
+  </button>
+  <button class="tab-btn" data-page="policy">
+    <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M10 3l6.5 2.5v4.5c0 4.2-2.7 7.3-6.5 8.5-3.8-1.2-6.5-4.3-6.5-8.5V5.5L10 3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+    <span>Policy</span>
+  </button>
+</nav>
+
+<!-- ===== REPORT ISSUE BUTTON + MODAL ===== -->
+<button id="pm-report-btn" class="pm-report-btn" title="Report a wrong answer or bug">
+  Report Issue
+</button>
+
+<div id="pm-report-modal" class="pm-modal-overlay" style="display:none;">
+  <div class="pm-modal setup-card">
+    <button class="pm-modal-close" id="pm-modal-close" aria-label="Close">&times;</button>
+    <h3 class="pm-modal-title">Report an Issue</h3>
+    <p class="info-text" style="margin-top:0;">
+      Found a wrong answer or a bug? Please share the details below.
+    </p>
+
+    <label class="setup-label" for="pm-issue-type">Issue type</label>
+    <select id="pm-issue-type" class="pm-input">
+      <option value="Wrong Answer">Wrong Answer</option>
+      <option value="Unclear Question">Unclear / Confusing Question</option>
+      <option value="Typo or Formatting">Typo or Formatting</option>
+      <option value="Website Bug">Website Bug</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label class="setup-label" for="pm-question-ref" style="margin-top:16px;">Question / Subject (optional)</label>
+    <input type="text" id="pm-question-ref" class="pm-input" placeholder="e.g. Neuroanatomy Q12, or paste the question text" />
+
+    <label class="setup-label" for="pm-issue-desc" style="margin-top:16px;">Describe the issue</label>
+    <textarea id="pm-issue-desc" class="pm-input" rows="4" placeholder="What looked wrong, and what the correct answer should be..."></textarea>
+
+    <button id="pm-submit-report" class="start-btn" style="margin-top:18px;">Submit Report</button>
+    <p class="pm-modal-note">
+      This opens a pre-filled GitHub Issue in a new tab — just click
+      "Submit new issue" there to complete your report.
+    </p>
+  </div>
+</div>
+
+<style>
+  /* ===== Page switching ===== */
+  .app { padding-bottom: 74px; }
+  .page { display: none; }
+  .page.active-page { display: block; }
+
+  /* ===== Bottom tab bar ===== */
+  .bottom-tabs {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    display: flex;
+    background: #14161c;
+    border-top: 1px solid #2a2d36;
+    padding: 6px max(0px, calc((100vw - 640px) / 2)) calc(6px + env(safe-area-inset-bottom, 0px));
+  }
+  .tab-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    opacity: 0.55;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 11.5px;
+    padding: 8px 4px 6px;
+    cursor: pointer;
+    transition: opacity .15s;
+  }
+  .tab-btn svg { stroke: currentColor; }
+  .tab-btn:hover { opacity: 0.8; }
+  .tab-btn.active {
+    opacity: 1;
+    color: #ffffff;
+  }
+  .tab-btn.active svg { color: #7FA6E8; }
+
+  /* Shift existing fixed bars up so they sit above the tab bar */
+  .ticker-bar { z-index: 40; }
+  .sticky-action-bar { bottom: 52px; }
+  .pm-report-btn { bottom: 62px; }
+  .setup-screen { padding-bottom: 150px; }
+
+  .info-screen { padding-top: 40px; }
+  .info-text {
+    font-family: var(--sans);
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0 0 16px;
+  }
+  .info-text:last-child { margin-bottom: 0; }
+  .info-list {
+    margin: 0;
+    padding-left: 20px;
+    font-family: var(--sans);
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .info-list li { margin-bottom: 12px; }
+  .info-list li:last-child { margin-bottom: 0; }
+
+  .pm-report-btn {
+    position: fixed;
+    bottom: 88px;
+    right: 20px;
+    background: var(--coral);
+    color: var(--paper-card);
+    border: none;
+    padding: 11px 18px;
+    border-radius: 999px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(18,32,84,0.18);
+    z-index: 999;
+    transition: background .15s;
+  }
+  .pm-report-btn:hover { background: #a5432f; }
+
+  .pm-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(26,36,32,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+  }
+  .pm-modal {
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .pm-modal-title {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 19px;
+    color: var(--teal-deep);
+    margin: 0 0 10px;
+  }
+  .pm-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: var(--ink-soft);
+    cursor: pointer;
+    line-height: 1;
+  }
+  .pm-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.4px solid var(--paper-line);
+    border-radius: 8px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--paper);
+    box-sizing: border-box;
+  }
+  .pm-modal-note {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    margin: 12px 0 0;
+    line-height: 1.5;
+  }
+</style>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+(function () {
+  const GITHUB_REPO = "Neetikacodes/physio-mcq";
+
+  const reportBtn = document.getElementById('pm-report-btn');
+  const modal     = document.getElementById('pm-report-modal');
+  const closeBtn  = document.getElementById('pm-modal-close');
+  const submitBtn = document.getElementById('pm-submit-report');
+
+  reportBtn.addEventListener('click', () => { modal.style.display = 'flex'; });
+  closeBtn.addEventListener('click', () => { modal.style.display = 'none'; });
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.style.display = 'none';
+  });
+
+  submitBtn.addEventListener('click', () => {
+    const type = document.getElementById('pm-issue-type').value;
+    const ref  = document.getElementById('pm-question-ref').value.trim();
+    const desc = document.getElementById('pm-issue-desc').value.trim();
+
+    if (!desc) {
+      alert('Please describe the issue before submitting.');
+      return;
+    }
+
+    const title = encodeURIComponent(`[${type}] ${ref || 'Report'}`);
+    const body  = encodeURIComponent(
+      `**Issue type:** ${type}\n**Question/Subject:** ${ref || 'N/A'}\n\n**Description:**\n${desc}`
+    );
+
+    window.open(
+      `https://github.com/${GITHUB_REPO}/issues/new?title=${title}&body=${body}`,
+      '_blank'
+    );
+    modal.style.display = 'none';
+  });
+})();
+</script>
+
+<script>
+(function () {
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const pages = {
+    practice: document.getElementById('page-practice'),
+    about: document.getElementById('page-about'),
+    policy: document.getElementById('page-policy'),
+  };
+
+  tabButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-page');
+
+      Object.keys(pages).forEach((key) => {
+        pages[key].classList.toggle('active-page', key === target);
+      });
+
+      tabButtons.forEach((b) => b.classList.toggle('active', b === btn));
+
+      // Scroll to top so the new page starts fresh, no leftover scroll position
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    });
+  });
+})();
+</script>
+</body>
+</html>
