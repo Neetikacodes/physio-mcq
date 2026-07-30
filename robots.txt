@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://neetikacodes.github.io/physio-mcq/sitemap.xml
